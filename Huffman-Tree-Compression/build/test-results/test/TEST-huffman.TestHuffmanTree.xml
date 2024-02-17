@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="huffman.TestHuffmanTree" tests="8" skipped="0" failures="0" errors="0" timestamp="2024-02-04T05:55:30" hostname="DESKTOP-L86H96T" time="0.003">
+  <properties/>
+  <testcase name="testGetCode1()" classname="huffman.TestHuffmanTree" time="0.0"/>
+  <testcase name="testGetCode2()" classname="huffman.TestHuffmanTree" time="0.0"/>
+  <testcase name="testGetCode3()" classname="huffman.TestHuffmanTree" time="0.001"/>
+  <testcase name="testGetCode4()" classname="huffman.TestHuffmanTree" time="0.001"/>
+  <testcase name="testGetTree1()" classname="huffman.TestHuffmanTree" time="0.0"/>
+  <testcase name="testGetTree2()" classname="huffman.TestHuffmanTree" time="0.0"/>
+  <testcase name="testGetTree3()" classname="huffman.TestHuffmanTree" time="0.0"/>
+  <testcase name="testGetTree4()" classname="huffman.TestHuffmanTree" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

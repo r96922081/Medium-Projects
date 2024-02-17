@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="bitoperator.TestBits" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-02-04T05:55:30" hostname="DESKTOP-L86H96T" time="0.001">
+  <properties/>
+  <testcase name="test1()" classname="bitoperator.TestBits" time="0.0"/>
+  <testcase name="test2()" classname="bitoperator.TestBits" time="0.001"/>
+  <testcase name="test3()" classname="bitoperator.TestBits" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
