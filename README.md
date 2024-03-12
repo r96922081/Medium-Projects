@@ -1,5 +1,6 @@
 1. [HuffmanTreeCompression](#HuffmanTreeCompression)
 2. [RDBMS](#RDBMS)
+3. [Static Web Page]Static Web Page (#Static Web Page)
 
 
 # HuffmanTreeCompression
@@ -19,3 +20,9 @@ input:\
 \
 output:\
 ![](https://r96922081.github.io/images/rdbms_output.png)
+
+# Static Web Page
+- Use html, css, javascript to create basic layout
+- Trans-compile ts to js
+- https://r96922081.github.io/my_static_page.html
+![](https://r96922081.github.io/images/my_static_page.png)
