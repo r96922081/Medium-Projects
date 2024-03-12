@@ -1,9 +1,9 @@
-1. [HuffmanTreeCompression](#HuffmanTreeCompression)
+1. [Huffman-Tree-Compression](#HuffmanTreeCompression)
 2. [RDBMS](#RDBMS)
 3. [Static-Web-Page]Static Web Page (#Static Web Page)
 
 
-# HuffmanTreeCompression
+# Huffman-Tree-Compression
 - ~0.64 compression ratio for text file
 - Compress file: Compressor.compress("huffman_wiki.txt", "huffman_wiki.txt_compressed")
 - Decompress file: Decompressor.decompress("huffman_wiki.txt_compressed", "huffman_wiki.txt_decompressed")
