@@ -28,3 +28,7 @@ output:\
 \
 \
 ![](https://r96922081.github.io/images/my_static_page.png)
+- Build code
+    - [Step 1] A go program that traverses [pages] folder recursively and creates a type script file that added those hierarchal folders' content into html 
+        - ![](https://r96922081.github.io/images/static_page_folders.png)
+    - [Step 2] Transcompile type script to java script
