@@ -25,4 +25,6 @@ output:\
 - Use html, css, javascript to create basic layout
 - Trans-compile ts to js
 - https://r96922081.github.io/my_static_page.html
--![](https://r96922081.github.io/images/my_static_page.png)
+\
+\
+![](https://r96922081.github.io/images/my_static_page.png)
