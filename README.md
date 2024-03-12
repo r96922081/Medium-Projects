@@ -8,10 +8,10 @@
 - Decompress file: Decompressor.decompress("huffman_wiki.txt_compressed", "huffman_wiki.txt_decompressed")
 
 # RDBMS
-- A prototype relational DB backed by BTree
-- Table is stored in disk
+- A relational DB prototype backed by BTree
+- The purpose is to learn how to use BTree to store data in disk
 - Index column is stored in BTree in disk
-- SQL syntax is very limited now
+- SQL syntax is very restricted now
 \
 \
 input:\
