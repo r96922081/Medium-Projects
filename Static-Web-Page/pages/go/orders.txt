@@ -1,0 +1,5 @@
+why go
+hello world
+syntax and basics
+command and code orgnization
+q and a

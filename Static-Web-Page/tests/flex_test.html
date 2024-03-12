@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<!-- 
+flex: 2 3 100px;  2 is grow porpotion, 3 is shrink porpotion, 100px is fixed size
+  div1 width = (350 - 100 - 100 ) / 3 * 2  + 100 = 250
+  div2 width = (350 - 100 - 100 ) / 3 * 1  + 100 = 200
+-->
+<div class="flex-container" style="display:flex;height:500px;width:350px">
+  <div id="div1" style="flex: 2 3 100px;background-color:brown;"></div>
+  <div id="div2" style="flex: 1 4 100px;background-color:yellow;"></div>
+</div>
+
+<p></p>
+
+<!-- 
+flex: 2 3 100px;  2 is grow porpotion, 3 is shrink porpotion, 100px is fixed size
+  div1 width = 100 - (200 - 130) / 7 * 3 = 70
+  div2 width = 100 - (200 - 130) / 7 * 4 = 60
+-->
+<div class="flex-container" style="display:flex;height:500px;width:130px">
+  <div id="div3" style="flex: 2 3 100px;background-color:brown;"></div>
+  <div id="div4" style="flex: 1 4 100px;background-color:yellow;"></div>
+</div>
+
+</body>
+</html>

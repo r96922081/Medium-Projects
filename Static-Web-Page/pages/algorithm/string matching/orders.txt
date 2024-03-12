@@ -1,0 +1,4 @@
+naive string matching
+Rabin-Karp algorithm
+finite state automata
+KMP algorithm

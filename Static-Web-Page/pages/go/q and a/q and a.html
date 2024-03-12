@@ -1,0 +1,110 @@
+
+<head>
+<style type="text/css">
+.auto-style1 {
+	text-align: left;
+}
+.auto-style2 {
+	text-align: left;
+	font-size: medium;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.auto-style3 {
+	font-size: medium;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.auto-style5 {
+	text-align: left;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.auto-style7 {
+	font-size: medium;
+	font-weight: normal;
+}
+.auto-style11 {
+	font-size: medium;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	font-weight: normal;
+}
+.auto-style12 {
+	font-weight: normal;
+}
+</style>
+</head>
+
+<h1 class="auto-style5"><span class="auto-style7">Excerpt from </span>
+<a href="https://golang.org/doc/faq"><span class="auto-style7">
+https://golang.org/doc/faq</span></a></h1>
+<ul>
+	<li>
+	<h1 class="auto-style1"><span class="auto-style11">Q: Does Go have a 
+	runtime? </span><span class="auto-style12"><br class="auto-style3"></span>
+	<span class="auto-style11">A: Yes, but Go's runtime is analogous to libc in 
+	C, not a virtual machine in Java</span></h1>
+	</li>
+	<li>
+	<h1 class="auto-style1"><span class="auto-style11">Q: Why does Go not have 
+	generic types?</span><span class="auto-style12"><br class="auto-style3">
+	</span><span class="auto-style11">A: They are convenient but they come at a 
+	cost in complexity</span></h1>
+	</li>
+	<li>
+	<h1 class="auto-style1"><span class="auto-style11">Q: Why does Go not have 
+	exceptions?</span><span class="auto-style12"><br class="auto-style3"></span>
+	<span class="auto-style11">A: We believe that coupling exceptions to a 
+	control structure, as in the try-catch-finally idiom, results in convoluted 
+	code</span></h1>
+	</li>
+	<li>
+	<h1 class="auto-style1"><span class="auto-style11">Q: Why does Go not 
+	support overloading of methods and operators? </span>
+	<span class="auto-style12"><br class="auto-style3"></span>
+	<span class="auto-style11">A: It was occasionally useful but that it could 
+	also be confusing and fragile in practice</span></h1>
+	</li>
+	<li>
+	<h1 class="auto-style1"><span class="auto-style11">Q: Why does Go not 
+	provide implicit numeric conversions? </span><span class="auto-style12">
+	<br class="auto-style3"></span><span class="auto-style11">A: It complicates 
+	the compiler and result is not portable</span></h1>
+	</li>
+</ul>
+<ul>
+	<li>
+	<h1 class="auto-style1"><span class="auto-style11">Q: Why is my trivial 
+	program such a large binary?</span><span class="auto-style12"><br class="auto-style3"></span>
+	<span class="auto-style11">A: All Go binaries include the Go runtime, along 
+	with the run-time type information necessary to support dynamic type checks, 
+	reflection, and even panic-time stack traces</span></h1>
+	</li>
+	<li>
+	<h1 class="auto-style1"><span class="auto-style11">Q: Why is there no 
+	pointer arithmetic?</span><span class="auto-style12"><br class="auto-style3"></span>
+	<span class="auto-style11">A: Safety</span></h1>
+	</li>
+	<li>
+	<h1 class="auto-style1"><span class="auto-style11">Q: Can I stop these 
+	complaints about my unused variable/import?</span><span class="auto-style12"><br class="auto-style3"></span><span class="auto-style11">
+	A: The presence of an unused variable may indicate a bug and Go compiler did 
+	not support warning</span></h1>
+	</li>
+</ul>
+<ul>
+	<li>
+	<h1 class="auto-style1"><span class="auto-style11">Q: Why Go compiler does 
+	not report warnings, only errors?</span><span class="auto-style12"><br class="auto-style3"></span>
+	<span class="auto-style11">A:&nbsp; First, it's worth complaining about.&nbsp; 
+	Second, warning about weak case can be a noise that masking real errors that 
+	should be fixed</span></h1>
+	</li>
+	<li>
+	<h1 class="auto-style1"><span class="auto-style11">Q: Why do garbage 
+	collection? Won't it be too expensive?</span><span class="auto-style12"><br class="auto-style3"></span><span class="auto-style11">
+	A: Managing the lifetimes of allocated objects is one of the biggest 
+	bookkeeping and is often the cause of bugs.&nbsp; Even in languages like C++ 
+	or Rust that provide mechanisms to assist, it often adding programming 
+	overhead of its own. Advances in garbage collection technology gave us 
+	confidence that it could be implemented cheaply enough</span></h1>
+	</li>
+</ul>
+<p class="auto-style2">&nbsp;</p>

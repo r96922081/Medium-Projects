@@ -1,0 +1,49 @@
+import * as collapse_menu from "./collapse_menu.js"
+import * as index from "./index.js"
+export var landscapes : string[] = []
+
+landscapes.push("DSCN2598.png")
+landscapes.push("DSCN3896.png")
+
+function init_default_page_nav_menu(){
+    index.add_text_title_item("Default Page", "default page", "../tests/folder_struct_test/default page/default page.html")
+    var top = new collapse_menu.NavItem("default page", "", "")
+
+    var item1 = new collapse_menu.NavItem("D", "nav_item_div", "../tests/folder_struct_test/default page/d/d.html")
+    top.append_child(item1)
+
+    collapse_menu.add_top_nav_item(top)
+}
+
+function init_default_selection_nav_menu(){
+    index.add_text_title_item("Default Selection", "default selection", "")
+    var top = new collapse_menu.NavItem("default selection", "", "")
+
+    var item1 = new collapse_menu.NavItem("E", "nav_item_div", "../tests/folder_struct_test/default selection/e/e.html")
+    top.append_child(item1)
+
+    var item2 = new collapse_menu.NavItem("F", "nav_item_div", "../tests/folder_struct_test/default selection/f/f.html")
+    top.append_child(item2)
+
+    collapse_menu.add_top_nav_item(top)
+}
+
+function init_should_included_nav_menu(){
+    index.add_text_title_item("Should_included", "should_included", "")
+    var top = new collapse_menu.NavItem("should_included", "", "")
+
+    var item1 = new collapse_menu.NavItem("B B", "nav_item_div", "../tests/folder_struct_test/should_included/b b/b b.html")
+    top.append_child(item1)
+
+    var item2 = new collapse_menu.NavItem("H", "nav_item_div", "../tests/folder_struct_test/should_included/b b/h/h.html")
+    item1.append_child(item2)
+    item1.add_triangle()
+
+    collapse_menu.add_top_nav_item(top)
+}
+
+export function init_nav_menu(){
+    init_default_page_nav_menu()
+    init_default_selection_nav_menu()
+    init_should_included_nav_menu()
+}

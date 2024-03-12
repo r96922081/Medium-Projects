@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="zh-tw" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>Naive String Matching</title>
+<style type="text/css">
+.auto-style1 {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	font-size: large;
+}
+.auto-style5 {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.auto-style7 {
+	font-size: large;
+}
+.auto-style8 {
+	text-align: center;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.auto-style10 {
+	text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+
+<h2 class="auto-style8">KMP(Knuth, Morris, and Pratt) Algorithm</h2>
+<ul>
+	<li class="auto-style5"><span class="auto-style7">Concept</span><ul>
+		<li class="auto-style1">It improved the finite state automata algorithm, 
+		where state still means the current matched count but it uses "prefix 
+		function" instead of "transition function"</li>
+	</ul>
+	</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+	<li class="auto-style5"><span class="auto-style7">Prefix function</span><ul>
+		<li class="auto-style1">Definition: f(n) = m, where m is the largest integer such that, -1 &lt;= m &lt; n, and P[0..m] 
+		is suffix of P[0..n]<br />
+		</li>
+		<li class="auto-style1">Prefix function of "abacabab"<br />
+		<table style="border-collapse: collapse; border-style: solid; border-width: 1px; color: rgb(0, 0, 0); font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif; font-size: large; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; height: 236px;">
+			<tr>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 81px;">i</td>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 153px;">sub-string</td>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 153px;">PrefixFunction(i)</td>
+			</tr>
+			<tr>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); height: 29px; width: 81px;">0</td>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); height: 29px; width: 153px;">a</td>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); height: 29px; width: 153px;">-1</td>
+			</tr>
+			<tr>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 81px;">1</td>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 153px;">ab</td>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 153px;">-1</td>
+			</tr>
+			<tr>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 81px; height: 28px;">2</td>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 153px; height: 28px;">
+				<span class="auto-style10"><strong>a</strong></span>b<span class="auto-style10"><strong>a</strong></span></td>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 153px; height: 28px;">0</td>
+			</tr>
+			<tr>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 81px;">3</td>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 153px;">abac</td>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 153px;">-1</td>
+			</tr>
+			<tr>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 81px;">4</td>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 153px;">
+				<strong><span class="auto-style10">a</span></strong>bac<span class="auto-style10"><strong>a</strong></span></td>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 153px;">0 
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 81px; ">5</td>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 153px; ">
+				<span class="auto-style10"><strong>ab</strong></span>ac<span class="auto-style10"><strong>ab</strong></span></td>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 153px; ">1 
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 81px; ">6</td>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 153px; ">
+				<span class="auto-style10"><strong>aba</strong></span>c<span class="auto-style10"><strong>aba</strong></span></td>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 153px; ">2 
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 81px; ">7</td>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 153px; ">
+				<strong><span class="auto-style10">ab</span></strong>acab<strong><span class="auto-style10">ab</span></strong></td>
+				<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 153px; ">1</td>
+			</tr>
+		</table>
+		<li class="auto-style1">Example of getting PrefixFunction[6]<ol>
+			<li class="auto-style1">Try PrefixFunction[5] = 1,&nbsp;
+			<span class="auto-style10"><strong>ab</strong></span>ac<strong><span class="auto-style10">ab</span></strong> 
+			| a, P[0..2] is suffix of P[0..5], so PrefixFunction[6] = 
+			PrefixFunction[5] + 1<br />
+		</ol>
+		<li class="auto-style1">Example of getting PrefixFunction[7]<ol>
+			<li class="auto-style1">Try PrefixFunction[6] = 2,&nbsp;
+			<span class="auto-style10"><strong>aba</strong></span>c<span class="auto-style10"><strong>aba</strong></span> 
+			| b, P[0..3] is NOT suffix of P[0..6]<br />
+			<li class="auto-style1">Try PrefixFunction[PrefixFunction[6]] = 0,
+			<span class="auto-style10"><strong>a</strong></span>b<strong><span class="auto-style10">a</span></strong>&nbsp; 
+			| b, P[0..1] is suffox of P[0..6], so PrefixFunction[7] = 
+			PrefixFunction[PrefixFunction[6]] + 1 = PrefixFunction[2] + 1 = 1<br />
+		</ol>
+		<li class="auto-style1">Algorithm of Getting PrefixFunction<ul>
+			<li class="auto-style1">
+			<p style="width: 527px;border:2px solid #000000">
+			<span class="auto-style7"><span class="auto-style5"><strong>&nbsp;GetPrefixFunction</strong>(pattern)</span><br class="auto-style5" />
+			<span class="auto-style5"><strong>&nbsp;input</strong>: pattern</span><br class="auto-style5" />&nbsp;<span class="auto-style5"><strong>output</strong>: prefix function</span><br class="auto-style5" />
+			<span class="auto-style5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prefixFunction[0] = -1</span><br class="auto-style5" />
+			<span class="auto-style5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for n = 1 to len(pattern)</span><br class="auto-style5" />
+			<span class="auto-style5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				m = n - 1</span><br class="auto-style5" />
+			<span class="auto-style5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				while m &gt;= 0 and pattern[n] != pattern[prefix[m] + 1]</span><br class="auto-style5" />
+			<span class="auto-style5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				m = prefixFunction[m]</span><br class="auto-style5" />
+			<span class="auto-style5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				prefixFunction[n] = prefixFunction[m] + 1</span></span></p>
+		</ul>
+	</ul>
+	</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+	<li class="auto-style5"><span class="auto-style7">KMP Algorithm</span></li>
+	<ul>
+		<li class="auto-style5"><span class="auto-style7">Example of finding pattern = 
+		"abacabab" in text = "abacabad"<br /></span>
+		<ul>
+			<li class="auto-style1">
+			<table style="border-collapse: collapse; border-style: solid; border-width: 1px; color: rgb(0, 0, 0); font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif; font-size: large; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; height: 236px;">
+				<tr>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 129px;">Index of text</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 51px;">x</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 107px;">current&nbsp; char</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 578px;">state</td>
+				</tr>
+				<tr>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); height: 29px; width: 129px;">t<sub>0</sub></td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); height: 29px; width: 51px;">0</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); height: 29px; width: 107px;">a</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); height: 29px; width: 578px;">1</td>
+				</tr>
+				<tr>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 129px;">t1</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 51px;">1</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 107px;">b</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 578px;">2</td>
+				</tr>
+				<tr>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 129px; height: 28px;">t2</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 51px; height: 28px;">2</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 107px; height: 28px;">a</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 578px; height: 28px;">3</td>
+				</tr>
+				<tr>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 129px;">t3</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 51px;">3</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 107px;">c</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 578px;">
+					<p>4</p>
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 129px; height: 22px;">t4</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 51px; height: 22px;">4</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 107px; height: 22px;">a</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 578px; height: 22px;">5</td>
+				</tr>
+				<tr>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 129px; height: 40px;">t5</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 51px; height: 40px;">5</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 107px; height: 40px;">b</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 578px; height: 40px;">6</td>
+				</tr>
+				<tr>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 129px; height: 40px;">t6</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 51px; height: 40px;">6</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 107px; height: 40px;">a</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 578px; height: 40px;">7<br />( step1. state = 6, pattern = abacab<span class="auto-style10"><strong>a</strong></span> 
+					, text = abacab<span class="auto-style10"><strong>a</strong></span>.&nbsp; 
+					a == a<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; set 
+					state = 6 + 1 = 7)</td>
+				</tr>
+				<tr>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 129px; height: 40px;">t7</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 51px; height: 40px;">7</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 107px; height: 40px;">d</td>
+					<td style="text-align: left; border: 1px solid rgb(0, 0, 0); width: 578px; height: 40px;">0<br />( step1. state = 7, patern = abacaba<span class="auto-style10"><strong>b</strong></span> 
+					, text = abacaba<strong><span class="auto-style10">d</span></strong>.&nbsp; 
+					b != d<br />&nbsp; step2. Find next state of 7 = prefixFunction[7-1] + 1 = 2 + 1 = 3<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state = 3, 
+					pattern = aba<span class="auto-style10"><strong>b</strong></span>, 
+					text = aba<span class="auto-style10"><strong>d</strong></span>.&nbsp; 
+					b != d<br />&nbsp; step3. Find next state of 3 = prefixFunction[3-1] + 1 = 0 + 1 = 1<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state = 1, 
+					pattern = a<strong><span class="auto-style10">b</span></strong>, 
+					text = a<strong><span class="auto-style10">d</span></strong>.&nbsp; 
+					b != d<br />&nbsp; step4. Find next state of 1 = prefixFunction[1 - 1] + 1 = -1 + 1 = 0)</td>
+				</tr>
+			</table>
+			<br /></li>
+		</ul>
+		</li>
+		<li class="auto-style1">
+		<p style="width: 527px;border:2px solid #000000">
+		<span class="auto-style7"><span class="auto-style5"><strong>&nbsp;</strong>KMP_Algorithm(text, pattern)</span><br class="auto-style5" />
+		<span class="auto-style5"><strong>&nbsp;input</strong>: text, pattern</span><br class="auto-style5" />&nbsp;<span class="auto-style5"><strong>output</strong>: 
+		found index</span><br class="auto-style5" /><span class="auto-style5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prefixFunction 
+		= GetPrefixFunction()<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state = 0</span><br class="auto-style5" />
+		<span class="auto-style5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for 
+		i = 0 to len(text)</span><br class="auto-style5" />
+		<span class="auto-style5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				while text[i] != pattern[state] and state &gt;= 0</span><br class="auto-style5" />
+		<span class="auto-style5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state = 
+		prefixFunction[state - 1] + 1<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		state += 1</span><br class="auto-style5" /><span class="auto-style5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				if state == len(pattern)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		return i - len(pattern) + 1<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return -1</span></span></p>
+		<br /></li>
+	</ul>
+</ul>
+<p class="auto-style1">&nbsp;</p>
+<ul>
+	<li class="auto-style5"><span class="auto-style5"><span class="auto-style7">
+	<a href="../string%20matching.go">Code</a> (Golang)</span><br class="auto-style7" />&nbsp;<ul>
+		<li><span class="auto-style7">&nbsp;&nbsp;&nbsp;
+		<img height="840" src="kmp_algorithm.png" width="521" /></span></span></li>
+	</ul>
+	</li>
+</ul>
+
+</body>
+
+</html>

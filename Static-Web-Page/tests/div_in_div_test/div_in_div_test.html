@@ -1,0 +1,53 @@
+<html>
+<head>
+<script>
+
+var c = 0
+
+function xx()
+{
+    var d = document.getElementById('aaa')
+    console.log(d)
+    d.addEventListener('click', () => 
+    {
+        if (c % 2 == 0)
+        {
+            d.style.transform = "rotate(90deg)"
+            d.style.webkitTransform = d.style.transform
+        }
+        else
+        {
+            d.style.transform = "rotate(0deg)"
+            d.style.webkitTransform = d.style.transform            
+        }
+        c++
+    })
+}
+
+window.onload = xx
+
+</script>    
+<style>
+#aaa {
+  width: 0; 
+  height: 0; 
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;  
+  border-left: 10px solid #fffff2;
+  transition-duration: 0.8s;
+  transition-property: transform;  
+
+}
+
+</style>
+</head> 
+
+
+<body>
+    <div style="width:200;height:200;background-color: brown;position: relative;">
+        <div style="width:0;height:0;position: absolute;top:50;left:50" id="aaa">
+        </div>
+    </div>
+</body>
+
+</html>

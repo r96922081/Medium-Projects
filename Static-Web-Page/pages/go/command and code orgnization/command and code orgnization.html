@@ -1,0 +1,236 @@
+
+<head>
+<style type="text/css">
+.auto-style1 {
+	text-align: center;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.auto-style2 {
+	text-align: left;
+}
+.auto-style3 {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	border: 1px solid #000000;
+}
+.auto-style4 {
+	border-collapse: collapse;
+}
+.auto-style5 {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.auto-style6 {
+	text-align: left;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+</style>
+</head>
+
+<h1 class="auto-style1">Command on Single File</h1>
+<ul>
+	<li>
+	<p class="auto-style6">build command</p>
+	<ul>
+		<li>
+		<p class="auto-style6">Usage: go build main.go</p>
+		</li>
+		<li>
+		<p class="auto-style2"><span class="auto-style5">Output: main.exe</span><br class="auto-style5">
+		</p>
+		</li>
+	</ul>
+	</li>
+	<li>
+	<p class="auto-style6">run command</p>
+	<ul>
+		<li>
+		<p class="auto-style6">Usage: go run main.go</p>
+		</li>
+		<li>
+		<p class="auto-style6">Effect: build and run</p>
+		</li>
+		<li>
+		<p class="auto-style2"><span class="auto-style5">Output: main.exe and 
+		execute main.exe</span><br class="auto-style5"></p>
+		</li>
+	</ul>
+	</li>
+	<li>
+	<p class="auto-style6">fmt command</p>
+	<ul>
+		<li>
+		<p class="auto-style6">Usage: go fmt main.go</p>
+		</li>
+		<li>
+		<p class="auto-style6">Effect: Formtting your code to have a consistent 
+		layout, for example, spacing</p>
+		</li>
+		<li>
+		<p class="auto-style6">Output: main.go</p>
+		</li>
+	</ul>
+	</li>
+	<li>
+	<p class="auto-style6">vet command</p>
+	<ul>
+		<li>
+		<p class="auto-style6">Usage: go vet main.go</p>
+		</li>
+		<li>
+		<p class="auto-style6">Effect: Statically analysis your code, i.e. lint</p>
+		</li>
+		<li>
+		<p class="auto-style6">Output: Error message (if any)</p>
+		</li>
+	</ul>
+	</li>
+	<li>
+	<p class="auto-style6">help command</p>
+	<ul>
+		<li>
+		<p class="auto-style6">Usage: go help [command]</p>
+		</li>
+		<li>
+		<p class="auto-style6">Example: go help build</p>
+		</li>
+	</ul>
+	</li>
+	<li>
+	<p class="auto-style6">List of all commands</p>
+	<ul>
+		<li>
+		<table class="auto-style4" style="width: 42%; height: 232">
+			<tr>
+				<td class="auto-style3" style="width: 124px">bug</td>
+				<td class="auto-style3">start a bug report</td>
+			</tr>
+			<tr>
+				<td class="auto-style3" style="width: 124px">build</td>
+				<td class="auto-style3">compile packages and dependencies</td>
+			</tr>
+			<tr>
+				<td class="auto-style3" style="width: 124px">clean</td>
+				<td class="auto-style3">remove object files and cached files</td>
+			</tr>
+			<tr>
+				<td class="auto-style3" style="width: 124px">doc</td>
+				<td class="auto-style3">show documentation for package or symbol</td>
+			</tr>
+			<tr>
+				<td class="auto-style3" style="width: 124px">enc</td>
+				<td class="auto-style3">print Go environment information</td>
+			</tr>
+			<tr>
+				<td class="auto-style3" style="width: 124px">fix</td>
+				<td class="auto-style3">update packages to use new APIs</td>
+			</tr>
+			<tr>
+				<td class="auto-style3" style="width: 124px">fmt</td>
+				<td class="auto-style3">gofmt (reformat) package sources</td>
+			</tr>
+			<tr>
+				<td class="auto-style3" style="width: 124px">genereate</td>
+				<td class="auto-style3">generate Go files by processing source</td>
+			</tr>
+			<tr>
+				<td class="auto-style3" style="width: 124px">get</td>
+				<td class="auto-style3">add dependencies to current module and 
+				install them</td>
+			</tr>
+			<tr>
+				<td class="auto-style3" style="width: 124px">install</td>
+				<td class="auto-style3">compile and install packages and 
+				dependencies</td>
+			</tr>
+			<tr>
+				<td class="auto-style3" style="width: 124px">list</td>
+				<td class="auto-style3">list packages or modules</td>
+			</tr>
+			<tr>
+				<td class="auto-style3" style="width: 124px">mod</td>
+				<td class="auto-style3">module maintenance</td>
+			</tr>
+			<tr>
+				<td class="auto-style3" style="width: 124px">run</td>
+				<td class="auto-style3">compile and run Go program</td>
+			</tr>
+			<tr>
+				<td class="auto-style3" style="width: 124px">test</td>
+				<td class="auto-style3">test packages</td>
+			</tr>
+			<tr>
+				<td class="auto-style3" style="width: 124px">tool</td>
+				<td class="auto-style3">run specified go tool</td>
+			</tr>
+			<tr>
+				<td class="auto-style3" style="width: 124px">version</td>
+				<td class="auto-style3">print Go version</td>
+			</tr>
+			<tr>
+				<td class="auto-style3" style="width: 124px">vet</td>
+				<td class="auto-style3">report likely mistakes in packages</td>
+			</tr>
+		</table>
+		<br class="auto-style5"></li>
+		<li class="auto-style5">Reference: https://golang.org/cmd/go/</li>
+	</ul>
+	</li>
+</ul>
+<h1 class="auto-style1">Command on Package</h1>
+<ul>
+	<li>
+	<p class="auto-style6">Steps if you want to apply command on packpages</p>
+	<ol>
+		<li>
+		<p class="auto-style6">Usage: go [cmd] [packages] </p>
+		</li>
+		<li>
+		<p class="auto-style6">Follow the go code orgnization rule like below.&nbsp; 
+		Put all your source files in Dir\src</p>
+		<ul>
+			<li>
+			<p class="auto-style6">Dir</p>
+			<ul>
+				<li>
+				<p class="auto-style6">bin</p>
+				</li>
+				<li>
+				<p class="auto-style6">pkg</p>
+				</li>
+				<li>
+				<p class="auto-style6">src</p>
+				<ul>
+					<li>
+					<p class="auto-style6">package1</p>
+					<ul>
+						<li>
+						<p class="auto-style6">hello1.go</p>
+						</li>
+					</ul>
+					</li>
+					<li>
+					<p class="auto-style6">package 2</p>
+					<ul>
+						<li>
+						<p class="auto-style6">hello2.go</p>
+						</li>
+					</ul>
+					</li>
+					<li>
+					<p class="auto-style6">main.go</p>
+					</li>
+				</ul>
+				</li>
+			</ul>
+			</li>
+		</ul>
+		</li>
+		<li>
+		<p class="auto-style6">Add &quot;Dir&quot; (say D:\my_go_dir) to gopath.&nbsp; for 
+		example, set gopath=%gopath%;D:\my_go_dir</p>
+		</li>
+		<li>
+		<p class="auto-style6">Example: go build main package1 package2</p>
+		</li>
+	</ol>
+	</li>
+</ul>

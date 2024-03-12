@@ -1,0 +1,76 @@
+<html>
+
+<head>
+
+<!-- default scrollbar looks more comfortable
+  <link rel="stylesheet" href="customized_scrollbar.css"> 
+-->
+
+<style>
+
+/*disable user select*/
+.title_item_div, #icon_img, .nav_item_div
+{
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+.title_item_div {
+    padding-top: 0px;
+    height: 100%;
+    float: left;
+    color:#fffff2;
+    font-family: 'Segoe UI';
+    font-weight: bold;
+    font-size: 16;
+    cursor:pointer;
+}
+
+.nav_item_div {
+  cursor:pointer;
+  background-color: #242921;
+  font-family: 'Segoe UI';
+  font-size: 14;  
+  color:#fffff2;
+  position:relative;
+}
+
+.nav_item_div:hover, .title_item_div:hover{
+  background-color:#500867!important;
+}
+
+
+</style>
+<script src="my_modules/index.js" type="module"></script>
+ <link rel="icon" href="./pages/front_page/favicon.png">
+<title>R96922081</title>
+</head>
+
+<body style="margin: 0;">
+
+<div style="display:flex;flex-flow: column;height: 100%;overflow:auto">
+
+<div id="title_div" style="flex: 0 1 auto;width:100%;height:60px;background-color:#242921">
+<img src="./pages/front_page/me.png" id="icon_img" style="margin-left: 0px;float: left;max-height: 100%;cursor: pointer;"> 
+</div>
+
+<div style="flex: 1 1 auto;display:flex;flex-flow: row;overflow-y: auto;">
+
+<div id="nav_div" style="background-color:#242921;height: 100%;flex:0 1 200px;overflow-y: auto;white-space: nowrap;">
+</div>
+
+<div id="resize_div" style="background-color:white; height: 100%;flex:0 1 5px;cursor:ew-resize;"></div>
+
+<div id="main_div" style="background-color:white;flex:1 1 auto;overflow-y: auto;">
+<iframe id="main_iframe" frameBorder="0" style="width:100%;height:100%"></iframe>
+</div>
+
+</div>
+
+</body>
+
+</html>

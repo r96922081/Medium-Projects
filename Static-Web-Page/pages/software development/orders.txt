@@ -1,0 +1,3 @@
+software craftsmanship
+principles
+anti-patterns

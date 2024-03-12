@@ -1,0 +1,326 @@
+
+<head>
+<style type="text/css">
+.auto-style1 {
+	font-size: large;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.auto-style2 {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.auto-style3 {
+	font-size: medium;
+}
+.auto-style4 {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	font-size: medium;
+}
+.auto-style5 {
+	border-collapse: collapse;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	font-size: medium;
+}
+.auto-style6 {
+	border-style: solid;
+	border-width: 1px;
+}
+</style>
+</head>
+
+<h2 class="auto-style2">DB Manipulation</h2>
+<ul>
+	<li class="auto-style4"><strong>show databases</strong>;</li>
+	<li class="auto-style4"><strong>create database</strong> db1;</li>
+	<li class="auto-style4"><strong>drop database </strong>db1</li>
+	<li><span class="auto-style4"><strong>use </strong>db1;</span><br class="auto-style2"></li>
+</ul>
+<h2 class="auto-style2">Table Manipulation</h2>
+<ul>
+	<li class="auto-style4"><strong>show tables</strong>;</li>
+	<li class="auto-style4"><strong>create table </strong>table1 (name text, age integer);</li>
+	<li class="auto-style4"><strong>drop table</strong> table1;</li>
+	<li class="auto-style4"><strong>describe </strong>table1; // show table1 schema</li>
+	<li><span class="auto-style4"><strong>alter</strong></span><ul>
+		<li class="auto-style4"><strong>alter table </strong>table1 <strong>add</strong> column (height real); // 
+		add column</li>
+		<li class="auto-style4"><strong>alter table </strong>table1 <strong>drop</strong> column height; // drop 
+		column</li>
+	</ul>
+	</li>
+	<li><span class="auto-style4"><strong>Constraints</strong></span><ul>
+		<li class="auto-style4">create table table2 (id integer <strong>primary key</strong>, 
+		name <strong>not null</strong>, weight <strong>check</strong>(weight &gt; 50), height real 
+		<strong>default </strong>155.0);</li>
+		<li class="auto-style4">All constraints: <span class="auto-style4">
+		<strong>not null, unique, primary key, foreign 
+		key, default, check, index</strong></span></li>
+	</ul>
+	</li>
+	<li><span class="auto-style4">common data type</span><ul>
+		<li class="auto-style4"><strong>text, date, integer, real </strong>(float value)</li>
+	</ul>
+	<br class="auto-style2">
+	</li>
+</ul>
+<h2 class="auto-style2">Row Manipulation</h2>
+<ul>
+	<li><span class="auto-style4"><strong>insert</strong></span><ul>
+		<li class="auto-style4">insert into table1 (name, age) values ('user1', 
+		39);</li>
+		<li class="auto-style4">insert into table1 values ('user2', 40);</li>
+		<li class="auto-style4">insert into table1 (name) values('user3'); // 
+		age will be set to NULL</li>
+	</ul>
+	</li>
+	<li><span class="auto-style4"><strong>select</strong></span><ul>
+		<li class="auto-style4">select * from table1; // select all columns of 
+		all row</li>
+		<li class="auto-style4">select name from table1; // select name column 
+		of all row</li>
+	</ul>
+	</li>
+	<li><span class="auto-style4"><strong>update</strong></span><ul>
+		<li class="auto-style4">update table1 set age = 33 where name = &quot;user1&quot;;</li>
+	</ul>
+	</li>
+	<li><span class="auto-style4"><strong>delete</strong></span><ul>
+		<li><span class="auto-style4">delete from table1 where name = &quot;user2&quot;;</span><br class="auto-style1">
+		</li>
+	</ul>
+	</li>
+</ul>
+<h2 class="auto-style2">Query</h2>
+<ul>
+	<li class="auto-style4"><strong>AS</strong>: select name <strong>AS </strong>name2 from table1; // rename 
+	column 'name' to 'name2'</li>
+	<li class="auto-style4"><strong>DISTINCT</strong>: select <strong>DISTINCT</strong> sex from person; // 
+	filters out duplicate result, shows only male and female</li>
+	<li><span class="auto-style4"><strong>Comparison operator</strong>: select * from table2 
+	where weight <strong>&gt;=</strong> 56</span><ul>
+		<li class="auto-style4">some common operators: =, !=, &gt;, &lt;, &gt;=, &lt;=</li>
+	</ul>
+	</li>
+	<li class="auto-style4"><strong>LIKE</strong>: select * from table2 where name
+	<strong>like</strong> 'user_'; 
+	// _ is wildcard, it will select user1, user2, ...</li>
+	<li class="auto-style1"><span class="auto-style3"><strong>% wildcard</strong></span><ul>
+		<li class="auto-style4">select * from table2 where name like <strong>&quot;use%&quot;</strong>; // 
+		name w/ &quot;use&quot; prefix</li>
+		<li class="auto-style4">select * from table2 where name like <strong>&quot;%2&quot;</strong>; // 
+		name w/ &quot;2&quot; suffix</li>
+		<li class="auto-style4">select * from table2 where name like <strong>&quot;%man%&quot;</strong>; // 
+		name contains &quot;man&quot;</li>
+	</ul>
+	</li>
+	<li class="auto-style4"><strong>IS (NOT) NULL:</strong> select * from table2 where height
+	<strong>IS 
+	NULL</strong>;</li>
+	<li class="auto-style1"><span class="auto-style2"><span class="auto-style3">
+	<strong>BETWEEN</strong>: </span></span>
+	<ul>
+		<li class="auto-style4">select * from table2 where name <strong>BETWEEN</strong> &quot;u&quot; and 
+		&quot;v&quot;; // it selects u, user1, uz, ..., v. But not v1</li>
+		<li class="auto-style4">select * from table2 where age <strong>between</strong> 50 and 
+		60; // full pointer. 50, ..., 60</li>
+	</ul>
+	</li>
+	<li class="auto-style4"><strong>AND/OR</strong>: select * from table2 where name BETWEEN&quot;u&quot; 
+	and &quot;v&quot; <strong>AND</strong> name like 'user_; // logic and</li>
+	<li class="auto-style4"><strong>ORDER BY </strong>... (ASC/DESC): select * from table2
+	<strong>ORDER 
+	BY</strong> age; // sort result. ASC/DSEC means ascending/descending order</li>
+	<li class="auto-style4"><strong>LIMIT</strong>: select * from table2 order by weight
+	<strong>limit</strong> 3; 
+	// maxmum number of results</li>
+	<li class="auto-style1"><span class="auto-style4"><strong>CASE</strong>: // Alter results 
+	with if-else clause</span><br class="auto-style4"><span class="auto-style4">
+	select name, </span><br class="auto-style4"><span class="auto-style4">
+	<strong>CASE</strong>
+	</span><br class="auto-style4"><span class="auto-style4"><strong>WHEN</strong> name = 'user1' 
+	<strong>THEN</strong> 'user1_fixed' </span><br class="auto-style4"><span class="auto-style4">
+	<strong>WHEN</strong> name = 'user2' <strong>THEN</strong> 'user2_fixed'</span><br class="auto-style4">
+	<span class="auto-style4"><strong>ELSE</strong> 'fixed'</span><br class="auto-style4">
+	<span class="auto-style4"><strong>END</strong> </span><br class="auto-style4">
+	<span class="auto-style4">from table2;</span></li>
+</ul>
+<h2 class="auto-style2">Aggregation</h2>
+<ul>
+	<li class="auto-style4"><strong>Count</strong>: select <strong>count</strong>(*) 
+	from table2 where sex = 'male'; // count result rows</li>
+	<li class="auto-style4"><strong>Sum</strong>: select <strong>SUM</strong>(weight) 
+	from table2 where weight &gt; 50; // add all values of a column</li>
+	<li class="auto-style4"><strong>MAX/MIN</strong>: select <strong>MAX</strong>(weight) 
+	from table2 where weight &gt; 50; // shows the max/min value of a column</li>
+	<li class="auto-style4"><strong>AVG</strong>: select <strong>AVG</strong>(weight) 
+	from table2; // shows the average value of a column</li>
+	<li class="auto-style4"><strong>ROUND</strong>: select <strong>ROUND</strong>(weight, 
+	2) from table2; // round the value to 2 decimal place. e.g. 1.115 =&gt; 1.12</li>
+	<li><span class="auto-style2"><strong><span class="auto-style3">GROUP BY</span></strong><span class="auto-style3">: 
+	// Group row with same condition.&nbsp; Can be used along with other 
+	aggregation like count, sum, max, avg, round, ...</span></span><ul>
+		<li class="auto-style4">select count(*) from table2 <strong>group 
+		by </strong>weight; // count the number of each weight</li>
+		<li class="auto-style4">select max(height) from table2 <strong>
+		group by </strong>weight, height; // Union mutiple conditions. weight = 
+		50, height = 50 are grouped; weight = 50, height = 60 are in another 
+		group</li>
+	</ul>
+	</li>
+	<li><span class="auto-style3"><span class="auto-style2"><strong>HAVING:</strong> 
+	// Having is used to filter goup;&nbsp; where is used to filter row</span></span><ul>
+		<li class="auto-style4">select max(height) from table2 group by weight 
+		<strong>having</strong> max(height) &gt; 60;</li>
+	</ul>
+	</li>
+</ul>
+<h2 class="auto-style2">Key</h2>
+<ul>
+	<li>
+	<p class="auto-style2">Primary Key: (1) Cannot be null (2) must be unique 
+	(3) A table can have either 0 or 1 primary key</p>
+	</li>
+	<li>
+	<p class="auto-style2">Foreign Key: If table A has column C&nbsp; which link 
+	to table B's primary key, then C is called foreign key</p>
+	</li>
+</ul>
+<h2 class="auto-style2">Cross Tables</h2>
+<ul>
+	<li>
+	<p class="auto-style4">Dividing tables helps reducing repeated data</p>
+	<ul>
+		<li>
+		<table class="auto-style5" style="width: 25%; height: 146px">
+			<tr>
+				<td class="auto-style6">Name</td>
+				<td class="auto-style6">Console</td>
+				<td class="auto-style6">Price</td>
+			</tr>
+			<tr>
+				<td class="auto-style6">user1</td>
+				<td class="auto-style6">PS5</td>
+				<td class="auto-style6">1500</td>
+			</tr>
+			<tr>
+				<td class="auto-style6">user2</td>
+				<td class="auto-style6">PS5</td>
+				<td class="auto-style6">1500</td>
+			</tr>
+			<tr>
+				<td class="auto-style6">user3</td>
+				<td class="auto-style6">Xbox</td>
+				<td class="auto-style6">2000</td>
+			</tr>
+			<tr>
+				<td class="auto-style6">user4</td>
+				<td class="auto-style6">PS5</td>
+				<td class="auto-style6">1500</td>
+			</tr>
+		</table>
+		</li>
+	</ul>
+	</li>
+</ul>
+<p class="auto-style2">&nbsp;</p>
+<ul>
+	<ul>
+		<li>
+		<table class="auto-style5" style="width: 14%; height: 136px">
+			<tr>
+				<td class="auto-style6">Name</td>
+				<td class="auto-style6">Console</td>
+			</tr>
+			<tr>
+				<td class="auto-style6">user1</td>
+				<td class="auto-style6">PS5</td>
+			</tr>
+			<tr>
+				<td class="auto-style6">user2</td>
+				<td class="auto-style6">PS5</td>
+			</tr>
+			<tr>
+				<td class="auto-style6">user3</td>
+				<td class="auto-style6">Xbox</td>
+			</tr>
+			<tr>
+				<td class="auto-style6">user4</td>
+				<td class="auto-style6" style="height: 28px">PS5</td>
+			</tr>
+		</table>
+		<br class="auto-style2">
+		<table class="auto-style5" style="width: 12%; height: 50px">
+			<tr>
+				<td class="auto-style6">Console</td>
+				<td class="auto-style6">Price</td>
+			</tr>
+			<tr>
+				<td class="auto-style6">PS5</td>
+				<td class="auto-style6">1500</td>
+			</tr>
+			<tr>
+				<td class="auto-style6">Xbox</td>
+				<td class="auto-style6">2000</td>
+			</tr>
+		</table>
+		</li>
+	</ul>
+</ul>
+<p class="auto-style2">&nbsp;</p>
+<ul>
+	<li>
+	<p class="auto-style2"><span class="auto-style3">&nbsp;<strong>JOIN</strong>: 
+	select table1.*, table2.height from table1 </span><strong>
+	<span class="auto-style3">JOIN</span></strong><span class="auto-style3"> 
+	table2 <strong>ON </strong>table1.name = table2.name // shows all columns of table1 
+	+ height 
+	of table2 where table1.name = table2.name</span></p>
+	<ul>
+		<li>
+		<p class="auto-style2">If there has no <strong>ON</strong> caluse, 
+		result will be the &quot;Cartesian Product&quot; of table1 &amp; table2</p>
+		</li>
+		<li>
+		<p class="auto-style2">We can add <strong>where </strong>clause after 
+		join, which is used to filter joined result.&nbsp; Be aware the 
+		difference between <strong>on</strong> and <strong>where</strong> here</p>
+		</li>
+	</ul>
+	</li>
+	<li>
+	<p class="auto-style2"><strong><span class="auto-style3">CROSS</span></strong>&nbsp;<strong><span class="auto-style3">JOIN</span></strong><span class="auto-style3">: 
+	select table1.*, table2.height from table1 </span><strong>
+	<span class="auto-style3">CROSS JOIN</span></strong><span class="auto-style3"> 
+	table2 // Have the same effect with <strong>JOIN</strong> w/o <strong>ON</strong> 
+	clause</span></p>
+	</li>
+	<li>
+	<p class="auto-style4"><strong>LEFT</strong>&nbsp;<strong>JOIN</strong>: 
+	select table1.*, table2.* from table1 <strong>
+	LEFT JOIN</strong> table2 <strong>ON </strong>table1.name = table2.name // 
+	row of table1 whose name did not appear in tabel2 will also returned, but 
+	all column of table2's will be NULL</p>
+	</li>
+	<li>
+	<p class="auto-style4"><strong>UNION</strong>: select * from table1 <strong>
+	union</strong> select * from table2 where table2.weight = 55; // Append 
+	table2's result directly to table1's result.&nbsp; 2 tables must have the 
+	same schema to union.&nbsp; However, mysql lessens such constraint</p>
+	</li>
+	<li>
+	<p class="auto-style4"><strong>WITH: with</strong> temp_query <strong>as</strong> 
+	(select * from table1 where age &gt; 40) select * from temp_query; // Use query 
+	result (temp_query) as another table to operate on</p>
+	</li>
+</ul>
+<h2 class="auto-style2">MySQL</h2>
+<ul>
+	<li><span class="auto-style4">switch from JS to SQL</span><ul>
+		<li class="auto-style4">\sql</li>
+	</ul>
+	</li>
+	<li><span class="auto-style4">connect</span><ul>
+		<li class="auto-style4">\connect root@localhost</li>
+	</ul>
+	</li>
+</ul>
+

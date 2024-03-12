@@ -1,0 +1,60 @@
+<html>
+
+<head>
+
+<style>
+
+.nav_item_div {
+  width:100%;
+  cursor:pointer;
+  background-color: #242921;
+  font-family: 'Segoe UI';
+  font-weight: bold;
+  font-size: 14;  
+  color:#fffff2;
+}
+
+.nav_item_div:hover, .title_item_div:hover{
+  color: yellow;
+  background-color:#500867;
+}
+
+
+</style>
+
+<script src="sub_menu_test.html.js"></script>
+
+<script>
+
+function add_item(text) {
+    var nav_div = document.getElementById("nav_div")   
+    var nav_item_div  = document.createElement("div")
+    nav_item_div.className = "nav_item_div"
+    nav_item_div.innerHTML = text
+    nav_div.appendChild(nav_item_div)
+
+    nav_item_div.on_click = function() {
+        console.log(this.innerHTML)
+    }
+
+    nav_item_div.addEventListener('click', nav_item_div.on_click)
+}
+
+window.onload = function() {
+for (var i = 0; i < 100; i++)
+    add_item(i.toString())
+}
+
+</script>
+
+</head>
+
+<body style="margin: 0;">
+
+<div style="flex: 1 1 auto;display:flex;flex-flow: row;overflow-y: auto;height:100%">
+
+<div id="nav_div" style="background-color:#500867;height: 100%;flex:0 1 100px;overflow-y: auto;overflow-x: hidden;">
+</div>
+</body>
+
+</html>
