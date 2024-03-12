@@ -8,9 +8,9 @@
 - Decompress file: Decompressor.decompress("huffman_wiki.txt_compressed", "huffman_wiki.txt_decompressed")
 
 # RDBMS
-- A prototype relational DB implementation backed BTree
-input:
+- A prototype relational DB implementation backed BTree\
+input:\
 ![](https://r96922081.github.io/images/rdbms_input.png)
-
-output:
+\
+output:\
 ![](https://r96922081.github.io/images/rdbms_output.png)
