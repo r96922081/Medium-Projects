@@ -1,6 +1,6 @@
 1. [Huffman-Tree-Compression](#HuffmanTreeCompression)
 2. [RDBMS](#RDBMS)
-3. [Static-Web-Page]Static Web Page (#Static Web Page)
+3. [Static-Web-Page]Static Web Page (#Static-Web-Page)
 
 
 # Huffman-Tree-Compression
