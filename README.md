@@ -13,6 +13,7 @@
 - Index column is stored in BTree in disk
 - SQL syntax is very limited now
 \
+\
 input:\
 ![](https://r96922081.github.io/images/rdbms_input.png)
 \
